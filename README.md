@@ -22,7 +22,7 @@ This project is a simple CRUD (Create, Read, Update, Delete) application built e
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/iDrako84/angular-19-crud-example.git
    ```
 2. Navigate to the project directory:
    ```bash
