@@ -1,0 +1,51 @@
+@if (fieldLabel) {
+    <label 
+        [attr.for]="fieldId" 
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        [ngClass]="inputError ? 'text-red-500' : ''"
+        [innerHTML]="fieldLabel"></label>
+}
+<input 
+    [attr.type]="fieldType" 
+    [attr.id]="fieldId"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" 
+    placeholder="John" 
+    [ngClass]="inputError ? 'border-red-500 text-red-500' : ''"
+    [ngModel]="value"
+    (ngModelChange)="setValue($event)"
+    [disabled]="disabled"
+    [placeholder]="fieldPlaceholder || ''"
+    [readOnly]="readonly" />
+@if (inputError) {
+    @if (fieldFormControlName.control.errors?.['required']) {
+        <div class="text-sm text-red-500">
+            {{ fieldErrorRequiredMess }}
+        </div>
+    }
+    @if (fieldFormControlName.control.errors?.['minlength']) {
+        <div class="text-sm text-red-500">
+            {{ fieldErrorMinLengthMess }} {{ fieldFormControlName.control.errors?.['minlength'].requiredLength }}
+        </div>
+    }
+    @if (fieldFormControlName.control.errors?.['maxlength']) {
+        <div class="text-sm text-red-500">
+            {{ fieldErrorMaxLengthMess }} {{ fieldFormControlName.control.errors?.['maxlength'].requiredLength }}
+        </div>
+    }
+    @if (fieldFormControlName.control.errors?.['pattern']) {
+        <div class="text-sm text-red-500">
+            {{ fieldErrorPatternMess }}
+        </div>
+    }
+    @if (fieldFormControlName.control.errors?.['min']) {
+        <div class="text-sm text-red-500">
+            {{ fieldErrorMinMess }} {{ fieldFormControlName.control.errors?.['min'].min }}
+        </div>
+    }
+    @if (fieldFormControlName.control.errors?.['max']) {
+        <div class="text-sm text-red-500">
+            {{ fieldErrorMaxMess }} {{ fieldFormControlName.control.errors?.['max'].max }}
+        </div>
+    }
+}
+  

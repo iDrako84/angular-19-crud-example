@@ -1,0 +1,41 @@
+<div class="p-2">
+    <ul class="w-full">
+        <li class="group" [ngClass]="isOpen() === true ? 'is-open flex' : ''">
+            <button type="button" class="mb-2" btn-primary (click)="onToggleIsOpen()">
+                <icon-bars-3></icon-bars-3>
+            </button>
+            <div class="group-[.is-open]:flex-1 group-[&:not(.is-open)]:w-full"></div>
+            <button type="button" class="mb-2" btn-primary (click)="onToggleColorSite()">
+                @if (isDarkMode() === true) {
+                    <icon-sun></icon-sun>                 
+                } @else {
+                    <icon-moon></icon-moon> 
+                }
+            </button>
+        </li>
+        @for (path of paths(); track $index) {
+            <li class="mb-1">
+                <a 
+                    [routerLink]="[path.path]"
+                    routerLinkActive="!bg-white dark:!bg-neutral-600" 
+                    class="w-full inline-block p-2 bg-gray-300 hover:bg-white dark:bg-neutral-800 dark:hover:bg-neutral-600 rounded shadow text-lg truncate">
+                    @if (isOpen() === true) {
+                        {{ path.label }}
+                    } @else {
+                        @switch (path.icon) {
+                            @case ('table-cells') {
+                                <icon-table-cells></icon-table-cells>
+                            }
+                            @case ('user') {
+                                <icon-user></icon-user>
+                            }
+                            @case ('face-smilie') {
+                                <icon-face-smilie></icon-face-smilie>
+                            }
+                        }
+                    }
+                </a>
+            </li>
+        }
+    </ul>
+</div>

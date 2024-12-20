@@ -1,0 +1,50 @@
+@if (pagination()) {
+    <div class="flex justify-end mb-2">
+        <nav aria-label="Page navigation example">
+            <ul class="inline-flex -space-x-px text-sm">
+              @if (itemsForPageOptions().length) {
+                <li class="me-4">
+                  Item for page
+                  <select 
+                    class="bg-gray-50 text-gray-900 text-sm rounded inline p-1 mx-2 min-h-8 dark:bg-neutral-600 dark:text-white focus:outline-none"
+                    [(ngModel)]="pagination().itemsForPage" 
+                    (ngModelChange)="onItemForPage($event)">
+                    @for (option of itemsForPageOptions(); track $index) {
+                      <option [value]="option">{{ option }}</option>
+                    }
+                  </select>
+                </li>
+              }
+              <li>
+                <button type="button" [disabled]="pagination().page === 1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 dark:text-white bg-white dark:bg-neutral-600 border border-e-0 border-gray-300 dark:border-neutral-600 dark:hover:border-neutral-800 rounded-s enabled:hover:bg-gray-100 dark:enabled:hover:bg-neutral-800 enabled:hover:text-gray-700 dark:enabled:hover:text-white" (click)="onSetPage(pagination().page - 1)">Previous</button>
+              </li>
+              @if ((pagination().page - 2) > 0) {
+                  <li>
+                    <button type="button" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 dark:text-white bg-white dark:bg-neutral-600 border border-gray-300 dark:border-neutral-600 dark:hover:border-neutral-800 enabled:hover:bg-gray-100 dark:enabled:hover:bg-neutral-800 enabled:hover:text-gray-700 dark:enabled:hover:text-white" (click)="onSetPage(pagination().page - 2)">{{ pagination().page - 2 }}</button>
+                  </li>
+              }
+              @if ((pagination().page - 1) > 0) {
+                  <li>
+                    <button type="button" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 dark:text-white bg-white dark:bg-neutral-600 border border-gray-300 dark:border-neutral-600 dark:hover:border-neutral-800 enabled:hover:bg-gray-100 dark:enabled:hover:bg-neutral-800 enabled:hover:text-gray-700 dark:enabled:hover:text-white" (click)="onSetPage(pagination().page - 1)">{{ pagination().page - 1 }}</button>
+                  </li>
+              }
+              <li>
+                <button type="button" class="flex items-center justify-center px-3 h-8 text-blue-600 dark:text-white border border-gray-300 dark:border-neutral-800 bg-blue-50 dark:bg-neutral-800">{{ pagination().page }}</button>
+              </li>
+              @if ((pagination().page + 1) <= (pagination().lastPage)) {
+                  <li>
+                    <button class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 dark:text-white bg-white dark:bg-neutral-600 border border-gray-300 dark:border-neutral-600 dark:hover:border-neutral-800 enabled:hover:bg-gray-100 dark:enabled:hover:bg-neutral-800 enabled:hover:text-gray-700 dark:enabled:hover:text-white" (click)="onSetPage(pagination().page + 1)">{{ pagination().page + 1 }}</button>
+                  </li>
+              }
+              @if ((pagination().page + 2) <= (pagination().lastPage)) {
+                  <li>
+                    <button type="button" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 dark:text-white bg-white dark:bg-neutral-600 border border-gray-300 dark:border-neutral-600 dark:hover:border-neutral-800 enabled:hover:bg-gray-100 dark:enabled:hover:bg-neutral-800 enabled:hover:text-gray-700 dark:enabled:hover:text-white" (click)="onSetPage(pagination().page + 2)">{{ pagination().page + 2 }}</button>
+                  </li>
+              }
+              <li>
+                <button type="button" [disabled]="pagination().page >= pagination().lastPage" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 dark:text-white bg-white dark:bg-neutral-600 border border-gray-300 dark:border-neutral-800 rounded-e enabled:hover:bg-gray-100 dark:enabled:hover:bg-neutral-800 enabled:hover:text-gray-700 dark:enabled:hover:text-white" (click)="onSetPage(pagination().page + 1)">Next</button>
+              </li>
+            </ul>
+        </nav>
+    </div>
+}

@@ -1,0 +1,65 @@
+<app-pagination 
+    [pagination]="pagination" 
+    [itemsForPageOptions]="itemsForPageOptions" 
+    (onSelectedPage)="onSelectedPage($event)"
+    (onSelectedItemForPage)="onSelectedItemForPage($event)"></app-pagination>
+<div class="relative overflow-x-auto rounded mb-2">
+    <table class="w-full text-sm dark:text-white">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-neutral-600 dark:text-white">
+            <tr>
+                @for (h of tableHead(); track $index; let l = $last) {
+                    <th scope="col" class="px-6 py-3 text-left" [ngClass]="{'text-right': l}">
+                        {{ h }}
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @for (user of usersPagination(); track $index; let l = $last) {
+                <tr class="bg-white dark:bg-neutral-600" [ngClass]="{'border-b': !l, 'dark:border-gray-900': !l}">
+                    <td class="px-6 py-4">
+                        {{ user.firstName }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ user.lastName }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ user.gender | gender }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ user.age }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ user.address }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ user.country | country }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ user.zip }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ user.email }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ user.telephone }}
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                        <button type="button" btn-primary class="ml-1" (click)="onEditUser(user)">
+                            <icon-pencil-square></icon-pencil-square>                              
+                        </button>
+                        <button type="button" btn-danger class="ml-1" (click)="onDeleteUser(user)">
+                            <icon-trash></icon-trash>                            
+                        </button>
+                    </td>
+                </tr>
+            } @empty {
+                <tr class="bg-white dark:bg-neutral-600 border-b dark:border-gray-900">
+                    <td class="px-6 py-4" [attr.colspan]="tableHead().length">
+                        No Users
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

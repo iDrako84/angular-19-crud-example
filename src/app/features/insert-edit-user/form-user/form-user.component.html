@@ -1,0 +1,61 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="flex flex-col bg-white dark:bg-black rounded">
+        <div class="w-full grid grid-cols-1 lg:grid-cols-3 gap-4 p-2 mb-4">
+            <app-input-field 
+                fieldId="firstName"
+                formControlName="firstName"
+                fieldLabel="First Name"
+                fieldPlaceholder="First Name..."></app-input-field>
+            <app-input-field 
+                fieldId="lastName"
+                formControlName="lastName"
+                fieldLabel="Last Name"
+                fieldPlaceholder="Last Name..."></app-input-field>
+            <app-select-field
+                fieldId="gender"
+                formControlName="gender"
+                fieldLabel="Gender">
+                @for (option of genderOptions(); track $index) {
+                    <option [value]="option.key">{{ option.value }}</option>
+                }
+            </app-select-field>
+            <app-input-field 
+                fieldId="age"
+                fieldType="number"
+                formControlName="age"
+                fieldLabel="Age"
+                fieldPlaceholder="Age..."></app-input-field>
+            <app-input-field 
+                fieldId="address"
+                formControlName="address"
+                fieldLabel="Address"
+                fieldPlaceholder="Address..."></app-input-field>
+            <app-select-field
+                fieldId="country"
+                formControlName="country"
+                fieldLabel="Country">
+                @for (option of countryOptions(); track $index) {
+                    <option [value]="option.abbreviation">{{ option.country }} ({{ option.region }})</option>
+                }
+            </app-select-field>
+            <app-input-field 
+                fieldId="zip"
+                formControlName="zip"
+                fieldLabel="Zip Code"
+                fieldPlaceholder="Zip Code..."></app-input-field>
+            <app-input-field 
+                fieldId="email"
+                formControlName="email"
+                fieldLabel="E-Mail"
+                fieldPlaceholder="E-Mail..."></app-input-field>
+            <app-input-field 
+                fieldId="telephone"
+                formControlName="telephone"
+                fieldLabel="Telephone"
+                fieldPlaceholder="Telephone..."></app-input-field>
+        </div>
+        <div class="w-full text-right p-2 mb-2">
+            <button type="submit" btn-primary [disabled]="form.invalid">Save</button>
+        </div>
+    </div>
+</form>

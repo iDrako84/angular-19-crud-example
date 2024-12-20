@@ -1,59 +1,65 @@
-# Crud
+# Angular 19 CRUD Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.5.
+## Demo View
+![Demo](./demo.gif)
 
-## Development server
+## About
+This project is a simple CRUD (Create, Read, Update, Delete) application built entirely in Angular 19. It demonstrates fundamental operations for managing user data, providing an intuitive user interface and efficient interaction with a simulated backend.
 
-To start a local development server, run:
+## Features
+- **User Table**: Displays a list of users with options to edit or delete each entry.
+- **User Form**: Allows adding new users or modifying existing user details.
+- **Frontend Only**: Simulates CRUD functionality without backend integration.
+- **Modern Angular Framework**: Built with Angular 19 for optimal performance and scalability.
+- **Tailwind CSS**: Utilized for responsive and modern styling.
+- **Heroicons**: Integrated for consistent and elegant iconography.
 
-```bash
-ng serve
-```
+## Requirements
+- Node.js (version 22 or higher)
+- Angular CLI (version 19 or higher)
+- A modern web browser
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone <repository_url>
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd angular-crud-app
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-## Code scaffolding
+## Running the Application
+1. Start the development server:
+   ```bash
+   ng serve
+   ```
+2. Open your browser and navigate to:
+   ```
+   http://localhost:4200
+   ```
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Usage
+- View the user list in the table.
+- Use the edit and delete buttons in the table to manage users.
+- Add new users or update existing ones using the form.
 
-```bash
-ng generate component component-name
-```
+## Development
+Feel free to contribute by forking the repository and creating pull requests. Ensure your changes align with the project's goals and coding standards.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Scripts
+- **Start Dev Server**: `ng serve`
+- **Build Project**: `ng build`
 
-```bash
-ng generate --help
-```
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-## Building
+## Acknowledgments
+Special thanks to the Angular community for providing resources and tools that made this project possible.
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Contact
+For questions or feedback, please contact amici.massimiliano@ik.me.

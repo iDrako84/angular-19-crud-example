@@ -1,0 +1,8 @@
+<div class="flex">
+    <div class="absolute h-screen bg-gray-400 dark:bg-black overflow-y-auto" [ngClass]="headerClasses()">
+        <app-header></app-header>
+    </div>
+    <div class="p-2" [ngClass]="contentClasses()">
+        <ng-content></ng-content>
+    </div>
+</div>
